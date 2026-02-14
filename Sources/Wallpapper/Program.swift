@@ -36,10 +36,51 @@ class Program {
             self.consoleIO.writeMessage("OK.\n", to: .debug)
             
             let decoder = JSONDecoder()
-            let formatter = DateFormatter()
-            formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-            decoder.dateDecodingStrategy = .formatted(formatter)
-
+            
+            decoder.dateDecodingStrategy = .custom { decoder in
+                let container = try decoder.singleValueContainer()
+                let dateString = try container.decode(String.self)
+                
+                // Try formats in order
+                let formatters: [DateFormatter] = [
+                    {
+                        let f = DateFormatter()
+                        f.locale = Locale(identifier: "en_US_POSIX")
+                        f.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+                        return f
+                    }(),
+                    {
+                        let f = DateFormatter()
+                        f.locale = Locale(identifier: "en_US_POSIX")
+                        f.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+                        return f
+                    }(),
+                    {
+                        let f = DateFormatter()
+                        f.locale = Locale(identifier: "en_US_POSIX")
+                        f.dateFormat = "HH:mm:ssZ"
+                        return f
+                    }(),
+                    {
+                        let f = DateFormatter()
+                        f.locale = Locale(identifier: "en_US_POSIX")
+                        f.dateFormat = "HH:mm:ss"
+                        return f
+                    }()
+                ]
+                
+                for formatter in formatters {
+                    if let date = formatter.date(from: dateString) {
+                        return date
+                    }
+                }
+                
+                throw DecodingError.dataCorruptedError(
+                    in: container,
+                    debugDescription: "Cannot decode date string \(dateString)"
+                )
+            }
+            
             self.consoleIO.writeMessage("Decoding JSON file...", to: .debug)
             let pictureInfos = try decoder.decode([PictureInfo].self, from: inputFileContents)
             self.consoleIO.writeMessage("OK (\(pictureInfos.count) pictures).\n", to: .debug)
