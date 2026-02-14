@@ -1,3 +1,10 @@
+Wallpapper easily lets you make your own custom dynamic wallpapers for macos.
+This fork I only made because I needed to make a fix for how the times are specified! (I updated the info below)
+
+
+My goal was to use it to make a dynamic wallpaper showing the skyline of 'Cologne (Germany)' during the course of a day!
+https://dominik.pich.info/CologneDay/ shows the results and the individual images.
+
 # 💻 wallpapper / wallpapper-exif
 
 ![Build Status](https://github.com/mczachurski/wallpapper/workflows/Build/badge.svg)
@@ -137,20 +144,20 @@ For wallpaper which based on OS time `json` file have to have structure like on 
         "fileName": "1.png",
         "isPrimary": true,
         "isForLight": true,
-        "time": "2012-04-23T10:25:43Z"
+        "time": "10:25:43"
     },
     {
         "fileName": "2.png",
-        "time": "2012-04-23T14:32:12Z"
+        "time": "14:32:12"
     },
     {
         "fileName": "3.png",
-        "time": "2012-04-23T18:12:01Z"
+        "time": "18:12:01"
     },
     {
         "fileName": "4.png",
         "isForDark": true,
-        "time": "2012-04-23T20:10:45Z"
+        "time": "20:10:45"
     }
 ]
 ```
