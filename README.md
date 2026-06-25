@@ -1,10 +1,3 @@
-Wallpapper easily lets you make your own custom dynamic wallpapers for macos.
-This fork I only made because I needed to make a fix for how the times are specified! (I updated the info below)
-
-
-My goal was to use it to make a dynamic wallpaper showing the skyline of 'Cologne (Germany)' during the course of a day!
-https://dominik.pich.info/CologneDay/ shows the results and the individual images.
-
 # 💻 wallpapper / wallpapper-exif
 
 ![Build Status](https://github.com/mczachurski/wallpapper/workflows/Build/badge.svg)
