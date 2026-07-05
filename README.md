@@ -137,20 +137,20 @@ For wallpaper which based on OS time `json` file have to have structure like on 
         "fileName": "1.png",
         "isPrimary": true,
         "isForLight": true,
-        "time": "2012-04-23T10:25:43Z"
+        "time": "10:25:43"
     },
     {
         "fileName": "2.png",
-        "time": "2012-04-23T14:32:12Z"
+        "time": "14:32:12"
     },
     {
         "fileName": "3.png",
-        "time": "2012-04-23T18:12:01Z"
+        "time": "18:12:01"
     },
     {
         "fileName": "4.png",
         "isForDark": true,
-        "time": "2012-04-23T20:10:45Z"
+        "time": "20:10:45"
     }
 ]
 ```
